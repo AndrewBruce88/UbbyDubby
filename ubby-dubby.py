@@ -5,6 +5,10 @@
 # Written 2021-12-09 by AN
 
 vowels = ['a','e','i','o','u','y']
+# multivowal_exception_set comprises clusters of vowels where each vowel is spoken in english (i.e., each vowel has a vowel sound)
+vowel_cluster_exception_set = {"io", "ii", "eo", "ua", "ia"} # add to this set as appropriate (examples: radio, radii, leo, lithuania)
+# These values are only ubbey-dubby-ized once: aa, ee, oo, uu, ae, ai, ao, au, ea, ei, eu, ie, iu, oa, oe, oi, ou, ue, ui, uo
+
 
 # for the purpose of this language, consider any combo of VVVCCCC that ends just before another V as a syllable
 def syllables(input_word):
@@ -78,9 +82,18 @@ def ubby_dubby(input_string):
                 output_word += syllable
             else:
                 output_word += syllable
-        
+
+        # deal with vowel clusters where each vowel has a vowel sound
+        multi_vowel_output_word = ""
+        for index, letter in enumerate(output_word):
+            if output_word[index - 1] + letter in vowel_cluster_exception_set:
+                multi_vowel_output_word += 'ubb-' + letter
+            else:
+                multi_vowel_output_word += letter
+        output_word = multi_vowel_output_word
+
         output_word_list.append(output_word)
-        
+
         # join with space except when the final character of the word is a newline character
         output_string = ''
         for word in output_word_list:

@@ -1,0 +1,15 @@
+This is trial text for words that have clusters of vowels that each have their own vowel sound.
+
+Vowel clusters with their own vowel sound for each vowel:
+Trio
+Leo
+Lithuania
+
+Vowel clusters with only one vowel sound:
+Cool
+Too
+Vacuum
+neat
+
+
+
